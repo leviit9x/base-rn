@@ -3,6 +3,7 @@ import {NativeStackNavigationOptions} from '@react-navigation/native-stack';
 import {BottomTabNavigationOptions} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Platform} from 'react-native';
+import {AppTab} from '../../screens';
 
 export const screenDefaultOptions = (): NativeStackNavigationOptions => ({
   headerShadowVisible: false,
@@ -25,25 +26,24 @@ export const tabBarDefaultOptions = (
   tabBarActiveTintColor: 'lightblue',
   tabBarInactiveTintColor: 'gray',
   tabBarStyle: {
-    backgroundColor: 'lightblue',
+    backgroundColor: 'orange',
     borderTopWidth: 0,
     elevation: 0,
   },
-  tabBarIcon: ({focused, color, size}) => (
-    <Icon name={getIconName(routeName, focused)} size={size} color={color} />
+  tabBarIcon: ({focused, size}) => (
+    <Icon name={getIconName(routeName, focused)} size={size} />
   ),
 });
 
 const getIconName = (routeName: string, focused: boolean): string => {
-  if (routeName === 'MainNavigator') {
-    return focused ? 'newspaper' : 'newspaper-outline';
+  if (routeName === AppTab.MAIN_TAB) {
+    return focused ? 'home' : 'home-outline';
   }
-  if (routeName === 'ExampleNavigator') {
-    return focused ? 'construct' : 'construct-outline';
+  if (routeName === AppTab.NOTIFICATION_TAB) {
+    return focused ? 'notifications' : 'notifications-outline';
   }
-  if (routeName === 'SettingsNavigator') {
+  if (routeName === AppTab.SETTINGS_TAB) {
     return focused ? 'cog' : 'cog-outline';
   }
-
   return 'list';
 };

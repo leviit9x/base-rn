@@ -3,9 +3,20 @@ import {
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
 
-import {BottomTabNavigationOptions} from '@react-navigation/bottom-tabs';
+import {
+  BottomTabBarProps,
+  BottomTabNavigationOptions,
+} from '@react-navigation/bottom-tabs';
 
-import {Modal, Screen, ScreenProps, Tabs} from '../../screens';
+import {Modals, Screens, ScreenProps, Tabs} from '../../screens';
+import {BackBehavior} from '@react-navigation/routers/lib/typescript/src/TabRouter';
+import {
+  EventMapBase,
+  ParamListBase,
+  RouteProp,
+  ScreenListeners,
+} from '@react-navigation/native';
+import {StyleProp, ViewStyle} from 'react-native';
 
 type BaseScreenInfo = {
   name: string;
@@ -17,7 +28,7 @@ type ScreenInfo = BaseScreenInfo & {
 };
 
 export type ScreenLayouts = {
-  [key in Screen]: ScreenInfo;
+  [key in Screens]: ScreenInfo;
 };
 
 export type GenStackNavigatorProps = ScreenInfo[];
@@ -35,5 +46,36 @@ export type GenTabNavigatorProps = TabScreenInfo[];
 export type ModalScreenInfo = ScreenInfo;
 
 export type ModalScreenLayouts = {
-  [key in Modal]: ScreenInfo;
+  [key in Modals]: ScreenInfo;
+};
+
+export type GenStackNavigatorOptions = {
+  backBehavior?: BackBehavior | undefined;
+  defaultScreenOptions?:
+    | BottomTabNavigationOptions
+    | ((props: {
+        route: RouteProp<ParamListBase, string>;
+        navigation: any;
+        options: BottomTabNavigationOptions;
+      }) => BottomTabNavigationOptions)
+    | undefined;
+
+  detachInactiveScreens?: boolean | undefined;
+  initialRouteName?: string | undefined;
+  safeAreaInsets?:
+    | {
+        top?: number | undefined;
+        right?: number | undefined;
+        bottom?: number | undefined;
+        left?: number | undefined;
+      }
+    | undefined;
+  sceneContainerStyle?: StyleProp<ViewStyle>;
+  screenListeners?:
+    | ScreenListeners<any, EventMapBase>
+    | ((props: {
+        route: RouteProp<ParamListBase>;
+        navigation: any;
+      }) => ScreenListeners<any, EventMapBase>);
+  tabBar?: ((props: BottomTabBarProps) => React.ReactNode) | undefined;
 };

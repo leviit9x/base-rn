@@ -3,6 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {merge} from 'lodash';
 import {screenDefaultOptions, tabBarDefaultOptions} from './options';
 import {
+  GenStackNavigatorOptions,
   GenStackNavigatorProps,
   GenTabNavigatorProps,
   ModalScreenInfo,
@@ -25,7 +26,10 @@ export const genStackNavigator = (
   return <Stack.Navigator>{stackScreens}</Stack.Navigator>;
 };
 
-export const genTabNavigator = (screens: GenTabNavigatorProps): JSX.Element => {
+export const genTabNavigator = (
+  screens: GenTabNavigatorProps,
+  options: GenStackNavigatorOptions,
+): JSX.Element => {
   const Tab = createBottomTabNavigator();
   const tabScreens = screens.map(it => (
     <Tab.Screen
@@ -40,7 +44,8 @@ export const genTabNavigator = (screens: GenTabNavigatorProps): JSX.Element => {
     <Tab.Navigator
       screenOptions={({route}) => ({
         ...tabBarDefaultOptions(route.name),
-      })}>
+      })}
+      {...options}>
       {tabScreens}
     </Tab.Navigator>
   );

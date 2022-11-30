@@ -16,7 +16,7 @@ export const resources: TLangResource = {
 
 export class TranslateService implements IService {
   private inited = false;
-  public _i18n: i18n = I18n;
+  private _i18n: i18n = I18n;
   public t = this._i18n.t;
 
   init = async (): PVoid => {
