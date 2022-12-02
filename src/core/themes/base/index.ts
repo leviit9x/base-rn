@@ -24,14 +24,14 @@ export const themes = {
   lineHeights,
 };
 
-export type TBorders = `borders${keyof typeof borders}`;
-export type TColors = `borders${keyof typeof colors}`;
-export type TOpacity = `borders${keyof typeof opacity}`;
-export type TRadii = `borders${keyof typeof radii}`;
-export type TSpacing = `borders${keyof typeof spacing}`;
-export type TTypography = `borders${keyof typeof typography}`;
-export type TLineHeight = `borders${keyof typeof lineHeights}`;
-export type TFontSizes = `borders${keyof typeof fontSizes}`;
-export type TFontWeights = `borders${keyof typeof fontWeights}`;
-export type TLetterSpacings = `borders${keyof typeof letterSpacings}`;
+export type TBorders = `borders-${keyof typeof borders}`;
+export type TColors = `colors-${keyof typeof colors}`;
+export type TOpacity = `opacity-${keyof typeof opacity}`;
+export type TRadii = `raddi-${keyof typeof radii}`;
+export type TSpacing = `spacing-${keyof typeof spacing}`;
+export type TTypography = `typo-${keyof typeof typography}`;
+export type TLineHeight = `lineHeight-${keyof typeof lineHeights}`;
+export type TFontSizes = `fontSizes-${keyof typeof fontSizes}`;
+export type TFontWeights = `fontWeights-${keyof typeof fontWeights}`;
+export type TLetterSpacings = `letterSpacings-${keyof typeof letterSpacings}`;
 export type TThemes = keyof typeof themes;
