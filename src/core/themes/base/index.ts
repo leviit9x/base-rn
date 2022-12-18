@@ -1,37 +1,43 @@
 import themeConfig from '../../../../schema.theme.json';
 
-export const borders = themeConfig.borders;
-export const colors = themeConfig.colors;
-export const opacity = themeConfig.opacity;
-export const radii = themeConfig.radii;
-export const spacing = themeConfig.spacing;
-export const typography = themeConfig.typography;
-export const fontSizes = themeConfig.typography.fontSizes;
-export const fontWeights = themeConfig.typography.fontWeights;
-export const letterSpacings = themeConfig.typography.letterSpacings;
-export const lineHeights = themeConfig.typography.lineHeights;
+const colors = themeConfig.colors;
+const fontSizes = themeConfig.fontSizes;
+const fontWeights = themeConfig.fontWeights;
+const radii = themeConfig.radii;
+const spacing = themeConfig.spacing;
+const opacity = themeConfig.opacity;
+const sizes = themeConfig.sizes;
+const zIndex = themeConfig.zIndex;
 
 export const themes = {
-  borders,
   colors,
   opacity,
   radii,
   spacing,
-  typography,
   fontSizes,
   fontWeights,
-  letterSpacings,
-  lineHeights,
+  sizes,
+  zIndex,
 };
 
-export type TBorders = `borders-${keyof typeof borders}`;
-export type TColors = `colors-${keyof typeof colors}`;
-export type TOpacity = `opacity-${keyof typeof opacity}`;
-export type TRadii = `raddi-${keyof typeof radii}`;
-export type TSpacing = `spacing-${keyof typeof spacing}`;
-export type TTypography = `typo-${keyof typeof typography}`;
-export type TLineHeight = `lineHeight-${keyof typeof lineHeights}`;
-export type TFontSizes = `fontSizes-${keyof typeof fontSizes}`;
-export type TFontWeights = `fontWeights-${keyof typeof fontWeights}`;
-export type TLetterSpacings = `letterSpacings-${keyof typeof letterSpacings}`;
-export type TThemes = keyof typeof themes;
+export const themePropertyMap: any = {
+  radii: 'borderRadius',
+  fontSizes: 'fontSize',
+  fontWeights: 'fontWeight',
+  opacity: 'opacity',
+  zIndex: 'zIndex',
+  color: 'color',
+  bg: 'backgroundColor',
+  // space: 'spacing',
+  // sizes: 'sizes',
+};
+
+export type TColors = keyof typeof colors;
+export type TOpacity = keyof typeof opacity;
+export type TRadii = keyof typeof radii;
+export type TSpacing = keyof typeof spacing;
+export type TFontSizes = keyof typeof fontSizes;
+export type TFontWeights = keyof typeof fontWeights;
+export type TSizes = keyof typeof sizes;
+export type TZIndex = keyof typeof zIndex;
+export type TKeyThemes = keyof typeof themes;

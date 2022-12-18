@@ -12,6 +12,7 @@ export const AppNavigator = (): JSX.Element => {
   return (
     <>
       <StatusBar />
+
       <NavigationContainer
         ref={navigation.n}
         onReady={navigation.onReady}

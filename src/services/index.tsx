@@ -1,12 +1,12 @@
 import React from 'react';
 import {NavigationService} from './navigation';
-import {OnStartService} from './onStart';
+import {SystemService} from './system';
 import {TranslateService} from './translate';
 
 export const services = {
   i18n: new TranslateService(),
   navigation: new NavigationService(),
-  onStart: new OnStartService(), // should be last
+  system: new SystemService(),
 };
 
 type ContextServices = typeof services;

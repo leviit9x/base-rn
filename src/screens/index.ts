@@ -79,7 +79,7 @@ const tabs: TabScreenLayouts = {
 };
 
 const TabNavigator = () =>
-  genTabNavigator([...Object.keys(tabs).map(k => tabs[k as Tabs])]);
+  genTabNavigator([...Object.keys(tabs).map(k => tabs[k as Tabs])], {});
 
 // Root Navigator
 export const RootNavigator = (): JSX.Element =>

@@ -8,6 +8,7 @@ type Services = Record<string, IService>;
 type PVoid = Promise<void>;
 type AnyObj = Record<string, unknown>;
 type PureFunc = () => void;
+type ArgsFunc<T = any> = (...args: T) => void;
 
 // SYSTEMS
 type UIAppearance = 'System' | 'Light' | 'Dark';
@@ -48,3 +49,6 @@ type Join<K, P> = K extends string | number
 type Leaves<T> = T extends object
   ? {[K in keyof T]-?: Join<K, Leaves<T[K]>>}[keyof T]
   : '';
+
+type Dict = Record<string, any>;
+type Tuple<A = Dict, B = A> = [A, B];
