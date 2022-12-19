@@ -1,6 +1,14 @@
 import {transparentize} from './tools/colors';
 import {get} from 'lodash';
 import {convertDataToString, convertStringNumberToNumber} from '../utils';
+import {
+  TColors,
+  TFontSizes,
+  TFontWeights,
+  TOpacity,
+  TRadii,
+  TZIndex,
+} from './base';
 
 export const getColor = (rawValue: any, keyTheme: any, theme: any) => {
   const alphaMatched =
@@ -520,7 +528,14 @@ export const propTruthyConfig = {
   },
 };
 
-export type ThemeTruthyPropKey = keyof typeof propTruthyConfig;
+export type ThemeTruthyPropKey = Record<`radii-${TRadii}`, boolean> &
+  Record<`zIndex-${TZIndex}`, boolean> &
+  Record<`opacity-${TOpacity}`, boolean> &
+  Record<`fontSize-${TFontSizes}`, boolean> &
+  Record<`fontWeights-${TFontWeights}`, boolean> &
+  Record<`color-${TColors}`, boolean> &
+  Record<`bg-${TColors}`, boolean>;
 
-export type TComponentTheme = Record<ThemePropKey, any> &
-  Record<ThemeTruthyPropKey, any>;
+export type ThemePropKeyPair = Record<ThemePropKey, any>;
+
+export type TComponentTheme = ThemePropKeyPair & ThemeTruthyPropKey;
