@@ -4,7 +4,6 @@ import {
   propConfig,
   propTruthyConfig,
   ThemePropKey,
-  ThemeTruthyPropKey,
 } from '../themes/styled-system';
 import {omitKeyPropsStyleRn} from './omitKeyPropsStyleRn';
 
@@ -35,8 +34,11 @@ function transformMapKey(k: string, origin: any) {
   const _valOfKey = origin[k];
 
   if (typeof _valOfKey === 'boolean') {
-    const [keyTheme, ...restPath] = k.split('-');
-    const mapConfig = propTruthyConfig[keyTheme as ThemeTruthyPropKey];
+    const [keyTheme, ...restPath] = k.split('-') as [
+      keyof typeof propTruthyConfig,
+      any,
+    ];
+    const mapConfig = propTruthyConfig[keyTheme];
 
     if (typeof mapConfig === 'object') {
       const val = get(

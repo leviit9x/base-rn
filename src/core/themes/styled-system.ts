@@ -9,6 +9,9 @@ import {
   TRadii,
   TZIndex,
 } from './base';
+import {themes} from './base';
+import {CSSProperties} from 'react';
+import {ViewStyle, ImageStyle, TextStyle} from 'react-native';
 
 export const getColor = (rawValue: any, keyTheme: any, theme: any) => {
   const alphaMatched =
@@ -488,8 +491,6 @@ export const propConfig = {
   ...typography,
 } as const;
 
-export type ThemePropKey = keyof typeof propConfig;
-
 export const propTruthyConfig = {
   bg: {
     property: 'backgroundColor',
@@ -538,4 +539,84 @@ export type ThemeTruthyPropKey = Record<`radii-${TRadii}`, boolean> &
 
 export type ThemePropKeyPair = Record<ThemePropKey, any>;
 
-export type TComponentTheme = ThemePropKeyPair & ThemeTruthyPropKey;
+export type ThemePropKey = keyof typeof propConfig;
+export type StyledPropConfig = typeof propConfig;
+export type StyledTruthyPropConfig = typeof propTruthyConfig;
+
+type RNStyles = ViewStyle & ImageStyle & TextStyle;
+
+type Theme = typeof themes;
+
+export interface ITheme extends Theme {}
+
+type Join<K, P> = K extends string | number
+  ? P extends string | number
+    ? `${K}${'' extends P ? '' : '.'}${P}`
+    : never
+  : never;
+
+type Leaves<T> = T extends object
+  ? {[K in keyof T]-?: Join<K, Leaves<T[K]>>}[keyof T]
+  : '';
+
+export type ColorType = Leaves<ITheme['colors'] | (string & {})>;
+
+type GetThemeScaleValues<T extends keyof ITheme> = 'colors' extends T
+  ? ColorType
+  : keyof ITheme[T] | (string & {}) | (number & {});
+
+type GetRNStyles<key, scale = null> = scale extends keyof ITheme
+  ? GetThemeScaleValues<scale>
+  : key extends keyof CSSProperties
+  ? CSSProperties[key]
+  : key extends keyof RNStyles
+  ? RNStyles[key]
+  : unknown;
+
+type AllProps<T = StyledPropConfig> = {
+  [key in Extract<keyof T, string>]?: T[key] extends boolean
+    ? GetRNStyles<key>
+    : key extends 'shadow'
+    ? GetRNStyles<null, 'shadows'>
+    : T[key] extends {property: any; scale: any}
+    ? GetRNStyles<T[key]['property'], T[key]['scale']>
+    : T[key] extends {properties: any; scale: any}
+    ? T[key]['properties'] extends {'0': string}
+      ? GetRNStyles<T[key]['properties']['0'], T[key]['scale']>
+      : unknown
+    : unknown;
+};
+
+export type StyledProps = Partial<ThemeTruthyPropKey> &
+  Omit<
+    AllProps,
+    | 'gap'
+    | 'verticalAlign'
+    | 'borderBottom'
+    | 'borderTop'
+    | 'borderLeft'
+    | 'borderRight'
+    | 'wordBreak'
+    | 'justifySelf'
+    | 'overflowWrap'
+    | 'textOverflow'
+    | 'whiteSpace'
+    | 'outline'
+    | 'outlineWidth'
+    | 'cursor'
+    | 'userSelect'
+    | 'order'
+    | 'backgroundSize'
+    | 'backgroundPosition'
+    | 'backgroundRepeat'
+    | 'backgroundAttachment'
+    | 'backgroundBlendMode'
+    | 'bgSize'
+    | 'bgPosition'
+    | 'bgRepeat'
+    | 'bgAttachment'
+    | 'bgBlendMode'
+    | 'bgImage'
+    | 'bgImg'
+    | 'bgPos'
+  >;
