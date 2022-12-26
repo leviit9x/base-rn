@@ -8,15 +8,15 @@ import {
   BottomTabNavigationOptions,
 } from '@react-navigation/bottom-tabs';
 
-import {Modals, Screens, ScreenProps, Tabs} from '../../screens';
-import {BackBehavior} from '@react-navigation/routers/lib/typescript/src/TabRouter';
+import { Modals, Screens, ScreenProps, Tabs } from '../../screens';
+import { BackBehavior } from '@react-navigation/routers/lib/typescript/src/TabRouter';
 import {
   EventMapBase,
   ParamListBase,
   RouteProp,
   ScreenListeners,
 } from '@react-navigation/native';
-import {StyleProp, ViewStyle} from 'react-native';
+import { StyleProp, ViewStyle } from 'react-native';
 
 type BaseScreenInfo = {
   name: string;

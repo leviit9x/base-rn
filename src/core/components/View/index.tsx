@@ -1,7 +1,7 @@
-import React, {forwardRef} from 'react';
-import {View as ViewRN, ViewProps} from 'react-native';
-import {StyledProps} from '../../themes/styled-system';
-import {makeStyledComponent} from '../../utils/makeStyledComponent';
+import React, { forwardRef } from 'react';
+import { View as ViewRN, ViewProps } from 'react-native';
+import { StyledProps } from '../../themes/styled-system';
+import { makeStyledComponent } from '../../utils/makeStyledComponent';
 
 const StyledView = makeStyledComponent(ViewRN);
 

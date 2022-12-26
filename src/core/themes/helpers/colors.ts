@@ -1,8 +1,8 @@
 import Color from 'tinycolor2';
-import {get, isEmpty} from 'lodash';
+import { get, isEmpty } from 'lodash';
 
 export function mode(light: any, dark: any) {
-  return (props: {colorMode: ColorMode}) =>
+  return (props: { colorMode: ColorMode }) =>
     props.colorMode === 'dark' ? dark : light;
 }
 

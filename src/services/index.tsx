@@ -1,7 +1,7 @@
 import React from 'react';
-import {NavigationService} from './navigation';
-import {SystemService} from './system';
-import {TranslateService} from './translate';
+import { NavigationService } from './navigation';
+import { SystemService } from './system';
+import { TranslateService } from './translate';
 
 export const services = {
   i18n: new TranslateService(),
@@ -13,7 +13,7 @@ type ContextServices = typeof services;
 
 const servicesContext = React.createContext<ContextServices>(services);
 
-export const ServicesProvider = ({children}: any) => (
+export const ServicesProvider = ({ children }: any) => (
   <servicesContext.Provider value={services}>
     {children}
   </servicesContext.Provider>

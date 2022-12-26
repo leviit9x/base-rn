@@ -1,34 +1,7 @@
-import {transparentize} from './tools/colors';
-import {get} from 'lodash';
-import {convertDataToString, convertStringNumberToNumber} from '../utils';
-import {
-  TColors,
-  TFontSizes,
-  TFontWeights,
-  TOpacity,
-  TRadii,
-  TZIndex,
-} from './base';
-import {themes} from './base';
-import {CSSProperties} from 'react';
-import {ViewStyle, ImageStyle, TextStyle} from 'react-native';
-
-export const getColor = (rawValue: any, keyTheme: any, theme: any) => {
-  const alphaMatched =
-    typeof rawValue === 'string' ? rawValue?.match(/:alpha\.\d\d?\d?/) : false;
-
-  if (alphaMatched) {
-    const colorMatched = rawValue?.match(/^.*?(?=:alpha)/);
-    const color = colorMatched ? colorMatched[0] : colorMatched;
-    const alphaValue = alphaMatched[0].split('.')[1];
-    const alphaFromToken = get(theme.opacity, alphaValue, alphaValue);
-    const alpha = alphaFromToken ? parseFloat(alphaFromToken) : 1;
-    const newColor = transparentize(color, alpha)(theme);
-    return newColor;
-  } else {
-    return get(keyTheme, rawValue, rawValue);
-  }
-};
+import { convertDataToString, convertStringNumberToNumber } from '../utils';
+import { ITheme, ITruthyKeyProps } from './base';
+import { CSSProperties } from 'react';
+import { ViewStyle, ImageStyle, TextStyle } from 'react-native';
 
 export const layout = {
   width: {
@@ -476,8 +449,8 @@ export const typography = {
   textOverflow: true,
   textTransform: true,
   whiteSpace: true,
-  textDecoration: {property: 'textDecorationLine'},
-  txtDecor: {property: 'textDecorationLine'},
+  textDecoration: { property: 'textDecorationLine' },
+  txtDecor: { property: 'textDecorationLine' },
   textDecorationLine: true,
 } as const;
 
@@ -529,25 +502,10 @@ export const propTruthyConfig = {
   },
 };
 
-export type ThemeTruthyPropKey = Record<`radii-${TRadii}`, boolean> &
-  Record<`zIndex-${TZIndex}`, boolean> &
-  Record<`opacity-${TOpacity}`, boolean> &
-  Record<`fontSize-${TFontSizes}`, boolean> &
-  Record<`fontWeights-${TFontWeights}`, boolean> &
-  Record<`color-${TColors}`, boolean> &
-  Record<`bg-${TColors}`, boolean>;
-
-export type ThemePropKeyPair = Record<ThemePropKey, any>;
-
 export type ThemePropKey = keyof typeof propConfig;
-export type StyledPropConfig = typeof propConfig;
-export type StyledTruthyPropConfig = typeof propTruthyConfig;
+type StyledPropConfig = typeof propConfig;
 
 type RNStyles = ViewStyle & ImageStyle & TextStyle;
-
-type Theme = typeof themes;
-
-export interface ITheme extends Theme {}
 
 type Join<K, P> = K extends string | number
   ? P extends string | number
@@ -556,7 +514,7 @@ type Join<K, P> = K extends string | number
   : never;
 
 type Leaves<T> = T extends object
-  ? {[K in keyof T]-?: Join<K, Leaves<T[K]>>}[keyof T]
+  ? { [K in keyof T]-?: Join<K, Leaves<T[K]>> }[keyof T]
   : '';
 
 export type ColorType = Leaves<ITheme['colors'] | (string & {})>;
@@ -578,16 +536,16 @@ type AllProps<T = StyledPropConfig> = {
     ? GetRNStyles<key>
     : key extends 'shadow'
     ? GetRNStyles<null, 'shadows'>
-    : T[key] extends {property: any; scale: any}
+    : T[key] extends { property: any; scale: any }
     ? GetRNStyles<T[key]['property'], T[key]['scale']>
-    : T[key] extends {properties: any; scale: any}
-    ? T[key]['properties'] extends {'0': string}
+    : T[key] extends { properties: any; scale: any }
+    ? T[key]['properties'] extends { '0': string }
       ? GetRNStyles<T[key]['properties']['0'], T[key]['scale']>
       : unknown
     : unknown;
 };
 
-export type StyledProps = Partial<ThemeTruthyPropKey> &
+export type StyledProps = Partial<Record<ITruthyKeyProps, boolean>> &
   Omit<
     AllProps,
     | 'gap'

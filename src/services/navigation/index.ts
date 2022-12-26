@@ -4,7 +4,7 @@ import {
   NavigationContainerRef,
   StackActions,
 } from '@react-navigation/native';
-import {ModalProps, ScreenProps} from '../../screens';
+import { ModalProps, ScreenProps } from '../../screens';
 
 export class NavigationService implements IService {
   private inited = false;
@@ -28,7 +28,7 @@ export class NavigationService implements IService {
     const currentName = this.n.current?.getCurrentRoute()?.name;
 
     if (!!prevName && !!currentName) {
-      const params = {to: currentName, from: prevName};
+      const params = { to: currentName, from: prevName };
 
       // send some statistics
       // facebook.event('ScreenOpen', params);

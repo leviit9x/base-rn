@@ -1,9 +1,9 @@
-import I18n, {i18n, LanguageDetectorAsyncModule} from 'i18next';
+import I18n, { i18n, LanguageDetectorAsyncModule } from 'i18next';
 import * as RNLocalize from 'react-native-localize';
-import {en, vi} from './locales';
-import {initReactI18next} from 'react-i18next';
+import { en, vi } from './locales';
+import { initReactI18next } from 'react-i18next';
 import moment from 'moment';
-import {AppLocale, TLangResource} from './types';
+import { AppLocale, TLangResource } from './types';
 
 export const resources: TLangResource = {
   vi: {
@@ -48,7 +48,7 @@ export class TranslateService implements IService {
         load: 'all',
         ns: ['translation'],
         defaultNS: 'translation',
-        react: {useSuspense: false},
+        react: { useSuspense: false },
         returnEmptyString: false,
         interpolation: {
           escapeValue: false,

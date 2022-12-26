@@ -1,7 +1,7 @@
-import {Text as TextRN, TextProps} from 'react-native';
-import React, {forwardRef} from 'react';
-import {makeStyledComponent} from '../../utils/makeStyledComponent';
-import {StyledProps} from '../../themes/styled-system';
+import { Text as TextRN, TextProps } from 'react-native';
+import React, { forwardRef } from 'react';
+import { makeStyledComponent } from '../../utils/makeStyledComponent';
+import { StyledProps } from '../../themes/styled-system';
 
 const StyledText = makeStyledComponent(TextRN);
 

@@ -1,14 +1,14 @@
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {merge} from 'lodash';
-import {screenDefaultOptions, tabBarDefaultOptions} from './options';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { merge } from 'lodash';
+import { screenDefaultOptions, tabBarDefaultOptions } from './options';
 import {
   GenStackNavigatorOptions,
   GenStackNavigatorProps,
   GenTabNavigatorProps,
   ModalScreenInfo,
 } from './types';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 export const genStackNavigator = (
   screens: GenStackNavigatorProps,
@@ -42,7 +42,7 @@ export const genTabNavigator = (
 
   return (
     <Tab.Navigator
-      screenOptions={({route}) => ({
+      screenOptions={({ route }) => ({
         ...tabBarDefaultOptions(route.name),
       })}
       {...options}>
@@ -62,10 +62,10 @@ export const genRootNavigator = (
   ));
 
   return (
-    <RootStack.Navigator screenOptions={{headerShown: false}}>
+    <RootStack.Navigator screenOptions={{ headerShown: false }}>
       <RootStack.Group>{appScreen}</RootStack.Group>
 
-      <RootStack.Group screenOptions={{presentation: 'modal'}}>
+      <RootStack.Group screenOptions={{ presentation: 'modal' }}>
         {modalScreens}
       </RootStack.Group>
     </RootStack.Navigator>

@@ -7,7 +7,9 @@
     "ios": "react-native run-ios --simulator='iPhone 13'",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "prettier": "npx prettier --write src/",
+    "cli": "node cli.js"
   },
   "dependencies": {
     "@octokit/rest": "^19.0.5",

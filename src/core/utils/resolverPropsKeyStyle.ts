@@ -1,11 +1,11 @@
-import {get} from 'lodash';
-import {themes, TKeyThemes} from '../themes';
+import { get } from 'lodash';
+import { themes, TKeyThemes } from '../themes';
 import {
   propConfig,
   propTruthyConfig,
   ThemePropKey,
 } from '../themes/styled-system';
-import {omitKeyPropsStyleRn} from './omitKeyPropsStyleRn';
+import { omitKeyPropsStyleRn } from './omitKeyPropsStyleRn';
 
 function resolveTransformer(val: any, transformer?: ArgsFunc) {
   return transformer ? transformer(val) : val;

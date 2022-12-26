@@ -9,12 +9,12 @@ import {
   TabScreenLayouts,
   ModalScreenLayouts,
 } from '../services/navigation/types';
-import {AppScreen, AppTab, AppModal, Tabs, Modals} from './types';
+import { AppScreen, AppTab, AppModal, Tabs, Modals } from './types';
 export * from './types';
 
-import {HomeScreen} from './HomeScreen';
-import {NotificationScreen} from './NotificationScreen';
-import {ProfileScreen} from './ProfileScreen';
+import { HomeScreen } from './HomeScreen';
+import { NotificationScreen } from './NotificationScreen';
+import { ProfileScreen } from './ProfileScreen';
 import ModalExample from './Modal/ModalExample';
 
 // Screens
@@ -22,17 +22,17 @@ const screens: ScreenLayouts = {
   HOME_SCREEN: {
     name: AppScreen.HOME_SCREEN,
     component: HomeScreen,
-    options: () => ({title: AppScreen.HOME_SCREEN}),
+    options: () => ({ title: AppScreen.HOME_SCREEN }),
   },
   NOTIFICATION_SCREEN: {
     name: AppScreen.NOTIFICATION_SCREEN,
     component: NotificationScreen,
-    options: () => ({title: AppScreen.NOTIFICATION_SCREEN}),
+    options: () => ({ title: AppScreen.NOTIFICATION_SCREEN }),
   },
   PROFILE_SCREEN: {
     name: AppScreen.PROFILE_SCREEN,
     component: ProfileScreen,
-    options: () => ({title: AppScreen.PROFILE_SCREEN}),
+    options: () => ({ title: AppScreen.PROFILE_SCREEN }),
   },
 };
 

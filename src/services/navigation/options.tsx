@@ -1,9 +1,9 @@
 import React from 'react';
-import {NativeStackNavigationOptions} from '@react-navigation/native-stack';
-import {BottomTabNavigationOptions} from '@react-navigation/bottom-tabs';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {Platform} from 'react-native';
-import {AppTab} from '../../screens';
+import { Platform } from 'react-native';
+import { AppTab } from '../../screens';
 
 export const screenDefaultOptions = (): NativeStackNavigationOptions => ({
   headerShadowVisible: false,
@@ -30,7 +30,7 @@ export const tabBarDefaultOptions = (
     borderTopWidth: 0,
     elevation: 0,
   },
-  tabBarIcon: ({focused, size}) => (
+  tabBarIcon: ({ focused, size }) => (
     <Icon name={getIconName(routeName, focused)} size={size} />
   ),
 });

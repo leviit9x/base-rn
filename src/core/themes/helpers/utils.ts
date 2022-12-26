@@ -1,4 +1,4 @@
-import {isNil, omit, omitBy} from 'lodash';
+import { isNil, omit, omitBy } from 'lodash';
 
 export const stylingProps = {
   margin: [
@@ -136,7 +136,7 @@ export function orderedExtractInObject(parent: any, values: Array<string>) {
 }
 
 export function getColorFormColorScheme(props: Record<string, any>) {
-  const {theme, colorScheme, isDisabled} = props;
+  const { theme, colorScheme, isDisabled } = props;
   const simpleColorScheme = colorScheme.split('.')[0];
   if (isDisabled) {
     return 'gray.300';
@@ -148,4 +148,17 @@ export function getColorFormColorScheme(props: Record<string, any>) {
   } else {
     return 'primary.200';
   }
+}
+
+/**
+ * @description resolve resource when set mode or use default, you can set mode in store ( redux, context, state, mobX ), example, themeMode: 'dark'
+ *
+ * @structure { dark, light, [variant] }, theme storage with single source, if source have [variant], it will resolve with type themeMode, or not, it return default
+ *
+ */
+export function resolveThemeMode<S extends { default: {} }>(
+  origin: S,
+  themeMode: keyof S,
+) {
+  return origin[themeMode] || origin.default;
 }

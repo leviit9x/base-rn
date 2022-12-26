@@ -17,15 +17,6 @@ type ColorMode = 'light' | 'dark' | null | undefined;
 type Language = 'en' | 'vi';
 
 // CORE
-type CoreThemeKey =
-  | 'borders'
-  | 'colors'
-  | 'opacity'
-  | 'radius'
-  | 'shadows'
-  | 'sizes'
-  | 'spaces'
-  | 'typography';
 
 type IColorHues = {
   50: string;
@@ -42,3 +33,9 @@ type IColorHues = {
 
 type Dict = Record<string, any>;
 type Tuple<A = Dict, B = A> = [A, B];
+
+type NestedKeyOf<ObjectType extends object> = {
+  [Key in keyof ObjectType & (string | number)]: ObjectType[Key] extends object
+    ? `${Key}-${NestedKeyOf<ObjectType[Key]>}`
+    : `${Key}`;
+}[keyof ObjectType & (string | number)];
