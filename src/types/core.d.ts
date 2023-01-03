@@ -39,3 +39,10 @@ type NestedKeyOf<ObjectType extends object> = {
     ? `${Key}-${NestedKeyOf<ObjectType[Key]>}`
     : `${Key}`;
 }[keyof ObjectType & (string | number)];
+
+// https://stackoverflow.com/questions/63628331/combine-dynamic-list-of-object-types-into-one-large-object-type
+type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
+  k: infer I,
+) => void
+  ? I
+  : never;

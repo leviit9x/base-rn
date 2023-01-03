@@ -1,9 +1,10 @@
 import { get } from 'lodash';
-import { themes, TKeyThemes } from '../themes';
+import { TKeyThemes, TypeofTheme } from '../themes';
 import {
   propConfig,
   propTruthyConfig,
   ThemePropKey,
+  ThemeTruthyKey,
 } from '../themes/styled-system';
 import { omitKeyPropsStyleRn } from './omitKeyPropsStyleRn';
 
@@ -11,7 +12,10 @@ function resolveTransformer(val: any, transformer?: ArgsFunc) {
   return transformer ? transformer(val) : val;
 }
 
-export function resolverPropsKeyStyle(props: any): Tuple {
+export function resolverPropsKeyStyle(
+  props: any,
+  themeConfig: TypeofTheme,
+): Tuple {
   // remove children prop
   const [stylesProps, otherProps] = omitKeyPropsStyleRn(props);
 
@@ -23,26 +27,23 @@ export function resolverPropsKeyStyle(props: any): Tuple {
   // bg-dark-500 raddi-xl
 
   Object.keys(stylesProps).forEach((k: string) => {
-    Object.assign(dataSet, transformMapKey(k, stylesProps));
+    Object.assign(dataSet, transformMapKey(k, stylesProps, themeConfig));
   });
 
   return [dataSet, otherProps];
 }
 
-function transformMapKey(k: string, origin: any) {
+function transformMapKey(k: string, origin: any, themeConfig: TypeofTheme) {
   const result = {} as Dict;
   const _valOfKey = origin[k];
 
   if (typeof _valOfKey === 'boolean') {
-    const [keyTheme, ...restPath] = k.split('-') as [
-      keyof typeof propTruthyConfig,
-      any,
-    ];
+    const [keyTheme, ...restPath] = k.split('-') as [ThemeTruthyKey, any];
     const mapConfig = propTruthyConfig[keyTheme];
 
     if (typeof mapConfig === 'object') {
       const val = get(
-        themes[mapConfig.themeKey as TKeyThemes],
+        themeConfig[mapConfig.themeKey as TKeyThemes],
         restPath.join('.'),
       );
 
@@ -59,7 +60,7 @@ function transformMapKey(k: string, origin: any) {
     if (typeof mapPropConfig === 'boolean') {
       result[k] = origin[k];
     } else if (typeof mapPropConfig === 'object') {
-      const mapTheme = themes[mapPropConfig.keyTheme as TKeyThemes] as any;
+      const mapTheme = themeConfig[mapPropConfig.keyTheme as TKeyThemes] as any;
       let val = get(mapTheme, origin[k]) ?? origin[k];
       // sometime have two properties in one key
       if (!mapPropConfig.property && mapPropConfig.properties) {

@@ -5,13 +5,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { useServices } from './services';
 import { RootNavigator } from './screens';
 
-import './core/themes/base';
-
 export const AppNavigator = (): JSX.Element => {
   useColorScheme();
-  const { navigation, i18n } = useServices();
-
-  i18n.t('hello');
+  const { navigation } = useServices();
 
   return (
     <>

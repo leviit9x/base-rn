@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavigationService } from './navigation';
-import { SystemService } from './system';
+import { SystemService } from './system/system';
 import { TranslateService } from './translate';
 
 export const services = {

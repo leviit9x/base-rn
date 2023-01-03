@@ -1,7 +1,7 @@
 import { convertDataToString, convertStringNumberToNumber } from '../utils';
-import { ITheme, ITruthyKeyProps } from './base';
+import { ITheme, TKeyThemes } from './base';
 import { CSSProperties } from 'react';
-import { ViewStyle, ImageStyle, TextStyle } from 'react-native';
+import { ViewStyle, ImageStyle, TextStyle, ViewProps } from 'react-native';
 
 export const layout = {
   width: {
@@ -98,22 +98,22 @@ export const position = {
   },
   top: {
     property: 'top',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   right: {
     property: 'right',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   bottom: {
     property: 'bottom',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   left: {
     property: 'left',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
 } as const;
@@ -208,7 +208,7 @@ export const border = {
   },
   borderTopWidth: {
     property: 'borderTopWidth',
-    keyTheme: 'spacing',
+    keyTheme: 'sizes',
     transformer: convertStringNumberToNumber,
   },
   borderTopColor: {
@@ -217,7 +217,7 @@ export const border = {
   },
   borderBottomWidth: {
     property: 'borderBottomWidth',
-    keyTheme: 'spacing',
+    keyTheme: 'sizes',
     transformer: convertStringNumberToNumber,
   },
   borderBottomColor: {
@@ -226,7 +226,7 @@ export const border = {
   },
   borderLeftWidth: {
     property: 'borderLeftWidth',
-    keyTheme: 'spacing',
+    keyTheme: 'sizes',
     transformer: convertStringNumberToNumber,
   },
   borderLeftColor: {
@@ -235,7 +235,8 @@ export const border = {
   },
   borderRightWidth: {
     property: 'borderRightWidth',
-    keyTheme: 'borderWidths',
+    keyTheme: 'sizes',
+    transformer: convertStringNumberToNumber,
   },
   borderRightColor: {
     property: 'borderRightColor',
@@ -244,189 +245,199 @@ export const border = {
   rounded: {
     property: 'borderRadius',
     keyTheme: 'radii',
+    transformer: convertStringNumberToNumber,
   },
   roundedTopLeft: {
     property: 'borderTopLeftRadius',
     keyTheme: 'radii',
+    transformer: convertStringNumberToNumber,
   },
   roundedTopRight: {
     property: 'borderTopRightRadius',
     keyTheme: 'radii',
+    transformer: convertStringNumberToNumber,
   },
 
   roundedBottomLeft: {
     property: 'borderBottomLeftRadius',
     keyTheme: 'radii',
+    transformer: convertStringNumberToNumber,
   },
 
   roundedBottomRight: {
     property: 'borderBottomRightRadius',
     keyTheme: 'radii',
+    transformer: convertStringNumberToNumber,
   },
 
   roundedTop: {
     properties: ['borderTopLeftRadius', 'borderTopRightRadius'],
     keyTheme: 'radii',
+    transformer: convertStringNumberToNumber,
   },
   borderBottomRadius: {
     properties: ['borderBottomLeftRadius', 'borderBottomRightRadius'],
     keyTheme: 'radii',
+    transformer: convertStringNumberToNumber,
   },
   roundedBottom: {
     properties: ['borderBottomLeftRadius', 'borderBottomRightRadius'],
     keyTheme: 'radii',
+    transformer: convertStringNumberToNumber,
   },
 
   roundedLeft: {
     properties: ['borderTopLeftRadius', 'borderBottomLeftRadius'],
     keyTheme: 'radii',
+    transformer: convertStringNumberToNumber,
   },
 
   roundedRight: {
     properties: ['borderTopRightRadius', 'borderBottomRightRadius'],
     keyTheme: 'radii',
+    transformer: convertStringNumberToNumber,
   },
 } as const;
 
 export const space = {
   margin: {
     property: 'margin',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   m: {
     property: 'margin',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   marginTop: {
     property: 'marginTop',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   mt: {
     property: 'marginTop',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   marginRight: {
     property: 'marginRight',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   mr: {
     property: 'marginRight',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   marginBottom: {
     property: 'marginBottom',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   mb: {
     property: 'marginBottom',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   marginLeft: {
     property: 'marginLeft',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   ml: {
     property: 'marginLeft',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   marginX: {
     properties: ['marginLeft', 'marginRight'],
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   mx: {
     properties: ['marginLeft', 'marginRight'],
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   marginY: {
     properties: ['marginTop', 'marginBottom'],
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   my: {
     properties: ['marginTop', 'marginBottom'],
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   padding: {
     property: 'padding',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   p: {
     property: 'padding',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   paddingTop: {
     property: 'paddingTop',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   pt: {
     property: 'paddingTop',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   paddingRight: {
     property: 'paddingRight',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   pr: {
     property: 'paddingRight',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   paddingBottom: {
     property: 'paddingBottom',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   pb: {
     property: 'paddingBottom',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   paddingLeft: {
     property: 'paddingLeft',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   pl: {
     property: 'paddingLeft',
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   paddingX: {
     properties: ['paddingLeft', 'paddingRight'],
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   px: {
     properties: ['paddingLeft', 'paddingRight'],
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   paddingY: {
     properties: ['paddingTop', 'paddingBottom'],
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
   py: {
     properties: ['paddingTop', 'paddingBottom'],
-    keyTheme: 'space',
+    keyTheme: 'spacing',
     transformer: convertStringNumberToNumber,
   },
 } as const;
@@ -467,44 +478,65 @@ export const propConfig = {
 export const propTruthyConfig = {
   bg: {
     property: 'backgroundColor',
-    themeKey: 'colors',
+    keyTheme: 'colors' as TKeyThemes,
     transformer: undefined,
   },
   color: {
     property: 'color',
-    themeKey: 'colors',
+    keyTheme: 'colors' as TKeyThemes,
     transformer: undefined,
   },
   opacity: {
     property: 'opacity',
+    keyTheme: 'opacity' as TKeyThemes,
     transformer: convertStringNumberToNumber,
-    themeKey: 'opacity',
   },
   radii: {
     property: 'borderRadius',
-    themeKey: 'radii',
+    keyTheme: 'radii' as TKeyThemes,
+    transformer: convertStringNumberToNumber,
+  },
+  margin: {
+    property: 'margin',
+    keyTheme: 'spacing' as TKeyThemes,
+    transformer: convertStringNumberToNumber,
+  },
+  padding: {
+    property: 'padding',
+    keyTheme: 'spacing' as TKeyThemes,
     transformer: convertStringNumberToNumber,
   },
   fontSize: {
     property: 'fontSize',
-    themeKey: 'fontSizes',
+    keyTheme: 'fontSizes' as TKeyThemes,
     transformer: convertStringNumberToNumber,
   },
-  fontWeights: {
+  fontWeight: {
     property: 'fontWeight',
-    themeKey: 'fontWeight',
+    keyTheme: 'fontWeights' as TKeyThemes,
     transformer: convertStringNumberToNumber,
   },
   zIndex: {
     property: 'zIndex',
-    themeKey: 'zIndex',
+    keyTheme: 'zIndex' as TKeyThemes,
     transformer: convertStringNumberToNumber,
   },
-};
+  width: {
+    property: 'width',
+    keyTheme: 'sizes' as TKeyThemes,
+    transformer: convertStringNumberToNumber,
+  },
+  height: {
+    property: 'height',
+    keyTheme: 'sizes' as TKeyThemes,
+    transformer: convertStringNumberToNumber,
+  },
+} as const;
 
 export type ThemePropKey = keyof typeof propConfig;
+export type ThemeTruthyKey = keyof typeof propTruthyConfig;
+type StyledPropTruthyConfig = typeof propTruthyConfig;
 type StyledPropConfig = typeof propConfig;
-
 type RNStyles = ViewStyle & ImageStyle & TextStyle;
 
 type Join<K, P> = K extends string | number
@@ -531,50 +563,66 @@ type GetRNStyles<key, scale = null> = scale extends keyof ITheme
   ? RNStyles[key]
   : unknown;
 
-type AllProps<T = StyledPropConfig> = {
+type AllProps<T extends StyledPropConfig> = {
   [key in Extract<keyof T, string>]?: T[key] extends boolean
     ? GetRNStyles<key>
-    : key extends 'shadow'
-    ? GetRNStyles<null, 'shadows'>
-    : T[key] extends { property: any; scale: any }
-    ? GetRNStyles<T[key]['property'], T[key]['scale']>
-    : T[key] extends { properties: any; scale: any }
+    : T[key] extends { property: any; keyTheme: any }
+    ? GetRNStyles<T[key]['property'], T[key]['keyTheme']>
+    : T[key] extends { properties: any; keyTheme: any }
     ? T[key]['properties'] extends { '0': string }
-      ? GetRNStyles<T[key]['properties']['0'], T[key]['scale']>
+      ? GetRNStyles<T[key]['properties']['0'], T[key]['keyTheme']>
       : unknown
     : unknown;
 };
 
-export type StyledProps = Partial<Record<ITruthyKeyProps, boolean>> &
-  Omit<
-    AllProps,
-    | 'gap'
-    | 'verticalAlign'
-    | 'borderBottom'
-    | 'borderTop'
-    | 'borderLeft'
-    | 'borderRight'
-    | 'wordBreak'
-    | 'justifySelf'
-    | 'overflowWrap'
-    | 'textOverflow'
-    | 'whiteSpace'
-    | 'outline'
-    | 'outlineWidth'
-    | 'cursor'
-    | 'userSelect'
-    | 'order'
-    | 'backgroundSize'
-    | 'backgroundPosition'
-    | 'backgroundRepeat'
-    | 'backgroundAttachment'
-    | 'backgroundBlendMode'
-    | 'bgSize'
-    | 'bgPosition'
-    | 'bgRepeat'
-    | 'bgAttachment'
-    | 'bgBlendMode'
-    | 'bgImage'
-    | 'bgImg'
-    | 'bgPos'
-  >;
+type GetTruthyPropsKey<T extends TKeyThemes> = T extends TKeyThemes
+  ? keyof ITheme[T]
+  : unknown;
+
+export type TTruthyStyleProps = {
+  [key in keyof StyledPropTruthyConfig as `${key}-${GetTruthyPropsKey<
+    StyledPropTruthyConfig[key]['keyTheme']
+  >}`]?: boolean;
+};
+
+export type StyledProps = Omit<
+  AllProps<StyledPropConfig>,
+  | 'gap'
+  | 'verticalAlign'
+  | 'borderBottom'
+  | 'borderTop'
+  | 'borderLeft'
+  | 'borderRight'
+  | 'wordBreak'
+  | 'justifySelf'
+  | 'overflowWrap'
+  | 'textOverflow'
+  | 'whiteSpace'
+  | 'outline'
+  | 'outlineWidth'
+  | 'cursor'
+  | 'userSelect'
+  | 'order'
+  | 'backgroundSize'
+  | 'backgroundPosition'
+  | 'backgroundRepeat'
+  | 'backgroundAttachment'
+  | 'backgroundBlendMode'
+  | 'bgSize'
+  | 'bgPosition'
+  | 'bgRepeat'
+  | 'bgAttachment'
+  | 'bgBlendMode'
+  | 'bgImage'
+  | 'bgImg'
+  | 'bgPos'
+>;
+
+export interface InterfaceStyledProps
+  extends UnionToIntersection<StyledProps | TTruthyStyleProps> {
+  /**
+   * Renders components as children. Accepts a JSX.Element or an array of JSX.Element. */
+  children?: JSX.Element | JSX.Element[] | string | any;
+}
+
+export type TStyledProps<T extends ViewProps> = T & InterfaceStyledProps;

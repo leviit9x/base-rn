@@ -8,6 +8,7 @@ import { AppTab } from '../../screens';
 export const screenDefaultOptions = (): NativeStackNavigationOptions => ({
   headerShadowVisible: false,
   headerTintColor: 'lightblue',
+  headerShown: false,
 
   // this setup makes large title work on iOS
   ...Platform.select({

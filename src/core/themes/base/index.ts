@@ -2,11 +2,11 @@ import { themeSchema } from './themeSchema';
 import { themeTs } from './themeTs';
 
 const colors = themeTs.colors;
-const fontSizes = themeTs.fontSizes;
-const fontWeights = themeTs.fontWeights;
+const opacity = themeTs.opacity;
 const radii = themeTs.radii;
 const spacing = themeTs.spacing;
-const opacity = themeTs.opacity;
+const fontSizes = themeTs.fontSizes;
+const fontWeights = themeTs.fontWeights;
 const sizes = themeTs.sizes;
 const zIndex = themeTs.zIndex;
 
@@ -34,3 +34,5 @@ export type TypeofTheme = typeof themes;
 export interface ITheme extends TypeofTheme {}
 export type ITruthyKeyProps = NestedKeyOf<ITheme>;
 export type SchemaThemeVariant = keyof typeof themeSchema;
+
+export { themeSchema, themeTs };
