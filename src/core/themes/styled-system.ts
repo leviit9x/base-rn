@@ -478,57 +478,57 @@ export const propConfig = {
 export const propTruthyConfig = {
   bg: {
     property: 'backgroundColor',
-    keyTheme: 'colors' as TKeyThemes,
+    keyTheme: 'colors' as const,
     transformer: undefined,
   },
   color: {
     property: 'color',
-    keyTheme: 'colors' as TKeyThemes,
+    keyTheme: 'colors' as const,
     transformer: undefined,
   },
   opacity: {
     property: 'opacity',
-    keyTheme: 'opacity' as TKeyThemes,
+    keyTheme: 'opacity' as const,
     transformer: convertStringNumberToNumber,
   },
   radii: {
     property: 'borderRadius',
-    keyTheme: 'radii' as TKeyThemes,
+    keyTheme: 'radii' as const,
     transformer: convertStringNumberToNumber,
   },
   margin: {
     property: 'margin',
-    keyTheme: 'spacing' as TKeyThemes,
+    keyTheme: 'spacing' as const,
     transformer: convertStringNumberToNumber,
   },
   padding: {
     property: 'padding',
-    keyTheme: 'spacing' as TKeyThemes,
+    keyTheme: 'spacing' as const,
     transformer: convertStringNumberToNumber,
   },
   fontSize: {
     property: 'fontSize',
-    keyTheme: 'fontSizes' as TKeyThemes,
+    keyTheme: 'fontSizes' as const,
     transformer: convertStringNumberToNumber,
   },
   fontWeight: {
     property: 'fontWeight',
-    keyTheme: 'fontWeights' as TKeyThemes,
-    transformer: convertStringNumberToNumber,
+    keyTheme: 'fontWeights' as const,
+    transformer: convertDataToString,
   },
   zIndex: {
     property: 'zIndex',
-    keyTheme: 'zIndex' as TKeyThemes,
+    keyTheme: 'zIndex' as const,
     transformer: convertStringNumberToNumber,
   },
   width: {
     property: 'width',
-    keyTheme: 'sizes' as TKeyThemes,
+    keyTheme: 'sizes' as const,
     transformer: convertStringNumberToNumber,
   },
   height: {
     property: 'height',
-    keyTheme: 'sizes' as TKeyThemes,
+    keyTheme: 'sizes' as const,
     transformer: convertStringNumberToNumber,
   },
 } as const;
@@ -576,7 +576,7 @@ type AllProps<T extends StyledPropConfig> = {
 };
 
 type GetTruthyPropsKey<T extends TKeyThemes> = T extends TKeyThemes
-  ? keyof ITheme[T]
+  ? NestedKeyOf<ITheme[T]>
   : unknown;
 
 export type TTruthyStyleProps = {

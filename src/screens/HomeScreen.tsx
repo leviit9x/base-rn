@@ -8,7 +8,9 @@ export function HomeScreen() {
 
   return (
     <View
+      margin-0
       radii-10
+      bg-amber-100
       flex={1}
       alignItems={'center'}
       justifyContent={'center'}

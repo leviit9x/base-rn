@@ -18,6 +18,7 @@ export function resolverPropsKeyStyle(
 ): Tuple {
   // remove children prop
   const [stylesProps, otherProps] = omitKeyPropsStyleRn(props);
+  console.log('===stylesProps', stylesProps);
 
   const dataSet = {} as Dict;
 
@@ -39,11 +40,11 @@ function transformMapKey(k: string, origin: any, themeConfig: TypeofTheme) {
 
   if (typeof _valOfKey === 'boolean') {
     const [keyTheme, ...restPath] = k.split('-') as [ThemeTruthyKey, any];
-    const mapConfig = propTruthyConfig[keyTheme];
+    const mapConfig = propTruthyConfig[keyTheme] as any;
 
     if (typeof mapConfig === 'object') {
       const val = get(
-        themeConfig[mapConfig.themeKey as TKeyThemes],
+        themeConfig[mapConfig.keyTheme as TKeyThemes],
         restPath.join('.'),
       );
 

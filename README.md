@@ -18,13 +18,13 @@ Building with React Native from scratch is a tedious process with multiple steps
 
 - Navigation Service [done]
 
-  ![navigation service](navigation.png)]
+  ![navigation service](./docs/static/navigation.png)]
 
 - I18n Service [done]
 
 - Theme util, generate CLI and import theme [coming soon]
 
-    ![theme](theme.png)]
+    ![theme](./docs/static/theme.png)]
 
 - Base built-in component [coming soon]
 - CLI generate template CRUD [coming soon]
