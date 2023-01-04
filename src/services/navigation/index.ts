@@ -4,7 +4,7 @@ import {
   NavigationContainerRef,
   StackActions,
 } from '@react-navigation/native';
-import { ModalProps, ScreenProps } from '../../screens';
+import { ModalProps, ScreenProps } from '@screens';
 
 export class NavigationService implements IService {
   private inited = false;

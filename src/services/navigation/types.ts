@@ -8,7 +8,7 @@ import {
   BottomTabNavigationOptions,
 } from '@react-navigation/bottom-tabs';
 
-import { Modals, Screens, ScreenProps, Tabs } from '../../screens';
+import { Modals, Screens, ScreenProps, Tabs } from '@screens';
 import { BackBehavior } from '@react-navigation/routers/lib/typescript/src/TabRouter';
 import {
   EventMapBase,

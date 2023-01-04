@@ -1,8 +1,7 @@
 import RNRestart from 'react-native-restart';
 import { MMKV } from 'react-native-mmkv';
-import { SchemaThemeVariant, themeSchema, TypeofTheme } from '../../core';
-import { API_CONFIG } from '../../core/api';
-
+import { SchemaThemeVariant, themeSchema, TypeofTheme } from '@core/themes';
+import { API_CONFIG } from '@core/api';
 export class SystemService implements IService {
   private inited = false;
   private _storage: MMKV = new MMKV();

@@ -2,13 +2,13 @@ import {
   genRootNavigator,
   genTabNavigator,
   genStackNavigator,
-} from './../services/navigation/help';
+} from '@services/navigation/help';
 
 import {
   ScreenLayouts,
   TabScreenLayouts,
   ModalScreenLayouts,
-} from '../services/navigation/types';
+} from '@services/navigation/types';
 import { AppScreen, AppTab, AppModal, Tabs, Modals } from './types';
 export * from './types';
 

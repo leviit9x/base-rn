@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { View, Text } from '../core/components';
-import { useServices } from '../services';
+import { useServices } from '@services';
+import { View, Text } from '@core/components';
 
 export function HomeScreen() {
   const { system } = useServices();

@@ -13,7 +13,7 @@ import { LogBox } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { AppNavigator } from './src/app';
 
-import { initServices, ServicesProvider } from './src/services';
+import { initServices, ServicesProvider } from '@services';
 
 LogBox.ignoreLogs([
   'EventEmitter.removeListener',

@@ -18,7 +18,6 @@ export function resolverPropsKeyStyle(
 ): Tuple {
   // remove children prop
   const [stylesProps, otherProps] = omitKeyPropsStyleRn(props);
-  console.log('===stylesProps', stylesProps);
 
   const dataSet = {} as Dict;
 
