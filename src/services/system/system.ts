@@ -1,16 +1,18 @@
 import RNRestart from 'react-native-restart';
-import { MMKV } from 'react-native-mmkv';
 import { SchemaThemeVariant, themeSchema, TypeofTheme } from '@core/themes';
 import { API_CONFIG } from '@core/api';
+
+import { MMKV } from 'react-native-mmkv';
+
 export class SystemService implements IService {
   private inited = false;
-  private _storage: MMKV = new MMKV();
+  private _storage = new MMKV();
   private srcTheme!: TypeofTheme;
 
   init = async (): PVoid => {
     if (!this.inited) {
       // some code init
-      this.initialThemeConfig();
+      await this.initialThemeConfig();
       this.inited = true;
     }
   };

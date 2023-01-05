@@ -17,7 +17,7 @@ export function HomeScreen() {
       bg={'amber.300'}
       flexDirection={'row'}>
       <View w={'50%'}>
-        <Text>{JSON.stringify(system.getSourceTheme().colors.amber[300])}</Text>
+        <Text>{JSON.stringify(system.getSourceTheme().colors.pink)}</Text>
       </View>
       <View w={'50%'}>
         <Text fontSize={'md'}>Choose theme</Text>
