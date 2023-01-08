@@ -2,6 +2,7 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useServices } from '@services';
 import { View, Text } from '@core/components';
+import Config from 'react-native-config';
 
 export function HomeScreen() {
   const { system } = useServices();
@@ -17,7 +18,7 @@ export function HomeScreen() {
       bg={'amber.300'}
       flexDirection={'row'}>
       <View w={'50%'}>
-        <Text>{JSON.stringify(system.getSourceTheme().colors.pink)}</Text>
+        <Text>{Config.ENV}</Text>
       </View>
       <View w={'50%'}>
         <Text fontSize={'md'}>Choose theme</Text>

@@ -3,13 +3,19 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "prettier": "npx prettier --write src/",
-    "cli": "node cli.js"
+    "generate-env-types": "node scripts/generate-env-types.js",
+    "generate-theme-types": "node scripts/generate-theme-types.js",
+    "android:staging": "react-native run-android --variant=stagingdebug",
+    "android:staging-release": "react-native run-android --variant=stagingrelease",
+    "android:dev": "react-native run-android --variant=developmentdebug",
+    "android:dev-release": "react-native run-android --variant=developmentrelease",
+    "android:prod": "react-native run-android --variant=productiondebug",
+    "android:prod-release": "react-native run-android --variant=productionrelease"
   },
   "dependencies": {
     "@octokit/rest": "^19.0.5",
@@ -24,6 +30,7 @@
     "react": "18.1.0",
     "react-i18next": "^12.0.0",
     "react-native": "0.70.6",
+    "react-native-config": "^1.4.11",
     "react-native-gesture-handler": "^2.8.0",
     "react-native-localize": "^2.2.4",
     "react-native-mmkv": "^2.5.1",

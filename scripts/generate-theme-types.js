@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { exec } = require('child_process');
+const { promisifyExec } = require('./utils');
 
 // CONFIG
 const VALID_KEYS = [
@@ -14,31 +14,17 @@ const VALID_KEYS = [
   'zIndex',
 ];
 
-const pathThemeSchema = path.resolve(__dirname, 'schema.theme.json');
-const pathThemeTs = path.resolve(__dirname, 'schema.ts.json');
+const pathThemeSchema = path.resolve(__dirname, '../schema.theme.json');
+const pathThemeTs = path.resolve(__dirname, '../schema.ts.json');
 const pathThemeSchemaConfig = path.resolve(
   __dirname,
-  'src/core/themes/base/themeSchema.ts',
+  '../src/core/themes/base/themeSchema.ts',
 );
 
 const pathThemeTsConfig = path.resolve(
   __dirname,
-  'src/core/themes/base/themeTs.ts',
+  '../src/core/themes/base/themeTs.ts',
 );
-
-const promisifyExec = command => {
-  return new Promise((resolve, reject) => {
-    exec(command, (error, stdout, stderr) => {
-      console.log(stdout);
-      console.log(stderr);
-      if (error !== null) {
-        reject(error);
-        console.log(`exec error: ${error}`);
-      }
-      resolve();
-    });
-  });
-};
 
 // UTILS
 
@@ -100,5 +86,7 @@ const main = async () => {
 };
 
 main().then(() => {
-  promisifyExec('yarn prettier');
+  promisifyExec(
+    `npx prettier --write ${pathThemeTsConfig} ${pathThemeSchemaConfig}`,
+  );
 });
