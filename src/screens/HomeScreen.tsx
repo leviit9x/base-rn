@@ -3,6 +3,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useServices } from '@services';
 import { View, Text } from '@core/components';
 import Config from 'react-native-config';
+import DeviceInfo from 'react-native-device-info';
 
 export function HomeScreen() {
   const { system } = useServices();
@@ -19,6 +20,8 @@ export function HomeScreen() {
       flexDirection={'row'}>
       <View w={'50%'}>
         <Text>{Config.ENV}</Text>
+        <Text>AppName: {DeviceInfo.getApplicationName()}</Text>
+        <Text>App Bundle Id: {DeviceInfo.getBundleId()}</Text>
       </View>
       <View w={'50%'}>
         <Text fontSize={'md'}>Choose theme</Text>
