@@ -8,6 +8,7 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "prettier": "npx prettier --write src/",
+    "generate-assets": "node scripts/generate-assets.js",
     "generate-env-types": "node scripts/generate-env-types.js",
     "generate-theme-types": "node scripts/generate-theme-types.js",
     "android:staging": "react-native run-android --variant=stagingdebug",

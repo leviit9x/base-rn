@@ -14,6 +14,22 @@ const promisifyExec = command => {
   });
 };
 
+const capitalizeEveryWordFile = str =>
+  str
+    .replace(/\b[a-z]/g, char => char.toUpperCase())
+    .split(' ')
+    .join('');
+
+const pathDirEntryFile = (pathFile, ext = 'ts') => `${pathFile}/index.${ext}`;
+
+const extension = {
+  png: 'png',
+  svg: 'svg',
+};
+
 module.exports = {
   promisifyExec,
+  capitalizeEveryWordFile,
+  pathDirEntryFile,
+  extension,
 };
