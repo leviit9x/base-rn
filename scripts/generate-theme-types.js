@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { promisifyExec } = require('./utils');
+const { prettier } = require('./utils');
 
 // CONFIG
 const VALID_KEYS = [
@@ -86,7 +86,5 @@ const main = async () => {
 };
 
 main().then(() => {
-  promisifyExec(
-    `npx prettier --write ${pathThemeTsConfig} ${pathThemeSchemaConfig}`,
-  );
+  prettier(pathThemeTsConfig, pathThemeSchemaConfig);
 });

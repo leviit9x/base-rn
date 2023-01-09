@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { promisifyExec } = require('./utils');
+const { prettier } = require('./utils');
 
 const generate = () => {
   const env = fs.readFileSync('.env.example', { encoding: 'ASCII' });
@@ -25,7 +25,7 @@ const generate = () => {
   }`;
   const pathFile = 'env.d.ts';
   fs.writeFileSync(pathFile, string, 'utf8');
-  promisifyExec(`npx prettier --write ${pathFile}`);
+  prettier(pathFile);
 };
 
 generate();
