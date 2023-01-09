@@ -27,10 +27,23 @@ const assetTypeFileNames = (dir, ext) => {
   return Array.from(new Set(array));
 };
 
-const generateWithFileNames = (fileNames, ext) => {
-  return fileNames
-    .map(name => `${capitalizeEveryWordFile(name)}: require('./${name}${ext}')`)
-    .join(',\n  ');
+const generateWithFileNames = (fileNames, ext, typeJs = 'es5') => {
+  if (typeJs === 'es5') {
+    return fileNames
+      .map(
+        name => `${capitalizeEveryWordFile(name)}: require('./${name}${ext}')`,
+      )
+      .join(',\n  ');
+  } else if (typeJs === 'es6') {
+    return fileNames
+      .map(
+        name =>
+          `export { default as ${capitalizeEveryWordFile(
+            name,
+          )}Icon } from './${name}${ext}'`,
+      )
+      .join(',\n  ');
+  }
 };
 
 const generate = () => {
@@ -40,21 +53,16 @@ const generate = () => {
   ];
 
   const stringProps = generateWithFileNames(images, `.${extension.png}`);
-  const iconsProps = generateWithFileNames(icons, `.${extension.svg}`);
+  const iconsProps = generateWithFileNames(icons, `.${extension.svg}`, 'es6');
 
   const stringImages = `export const appImages = {
     ${stringProps}
   }
   `;
 
-  const stringIcons = `export const appIcons = {
-    ${iconsProps}
-  }
-  `;
-
   Promise.all([
     fs.writeFileSync(pathDirEntryFile(imagesDir), stringImages, 'utf8'),
-    fs.writeFileSync(pathDirEntryFile(iconsDir), stringIcons, 'utf8'),
+    fs.writeFileSync(pathDirEntryFile(iconsDir), iconsProps, 'utf8'),
   ]).then(() => {
     prettier(imagesDir, iconsDir);
   });

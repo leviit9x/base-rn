@@ -1,1 +1,1 @@
-export const appIcons = {};
+export { default as MemeIcon } from './meme.svg';

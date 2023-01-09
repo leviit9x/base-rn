@@ -4,7 +4,7 @@ export function omitKeyPropsStyleRn(props: Dict) {
   let otherProps = {} as Dict;
 
   Object.keys(props).forEach((k: keyof typeof props) => {
-    if (typeof props[k] !== 'function' && k !== 'children') {
+    if (typeof props[k] !== 'function' && !['children', 'style'].includes(k)) {
       styleProps[k] = props[k];
     } else {
       otherProps[k] = props[k];
