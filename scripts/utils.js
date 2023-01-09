@@ -27,9 +27,13 @@ const extension = {
   svg: 'svg',
 };
 
+const prettier = (...args) =>
+  promisifyExec(`npx prettier --write ${args.join(' ')}`);
+
 module.exports = {
   promisifyExec,
   capitalizeEveryWordFile,
   pathDirEntryFile,
+  prettier,
   extension,
 };

@@ -2,9 +2,9 @@ const fs = require('fs');
 const path = require('path');
 const {
   capitalizeEveryWordFile,
-  promisifyExec,
   extension,
   pathDirEntryFile,
+  prettier,
 } = require('./utils');
 const pathAssets = path.resolve(__dirname, '../src/assets');
 
@@ -18,11 +18,11 @@ const resolvePathAssetType = type => `${pathAssets}/${assetTypes[type]}`;
 const imagesDir = resolvePathAssetType(assetTypes.images);
 const iconsDir = resolvePathAssetType(assetTypes.icons);
 
-const assetTypeFileNames = (dir, extension) => {
+const assetTypeFileNames = (dir, ext) => {
   const array = fs
     .readdirSync(dir)
-    .filter(file => file.endsWith(extension))
-    .map(file => file.replace(extension, ''));
+    .filter(file => file.endsWith(ext))
+    .map(file => file.replace(ext, ''));
 
   return Array.from(new Set(array));
 };
@@ -56,7 +56,7 @@ const generate = () => {
     fs.writeFileSync(pathDirEntryFile(imagesDir), stringImages, 'utf8'),
     fs.writeFileSync(pathDirEntryFile(iconsDir), stringIcons, 'utf8'),
   ]).then(() => {
-    promisifyExec(`npx prettier --write ${imagesDir} ${iconsDir}`);
+    prettier(imagesDir, iconsDir);
   });
 };
 

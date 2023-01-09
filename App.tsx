@@ -12,8 +12,8 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { LogBox } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { AppNavigator } from './src/app';
-
 import { initServices, ServicesProvider } from '@services';
+import RNBootSplash from 'react-native-bootsplash';
 
 LogBox.ignoreLogs([
   'EventEmitter.removeListener',
@@ -31,7 +31,9 @@ export default (): JSX.Element => {
   }, []);
 
   useEffect(() => {
-    startApp();
+    startApp().finally(async () => {
+      await RNBootSplash.hide({ fade: true, duration: 500 });
+    });
   }, [startApp]);
 
   return (

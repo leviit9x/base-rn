@@ -11,7 +11,6 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		FAA5A2182935148E001FC2A2 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAA5A2082935148E001FC2A2 /* Fontisto.ttf */; };
 		FAA5A2192935148E001FC2A2 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAA5A2092935148E001FC2A2 /* Octicons.ttf */; };
 		FAA5A21A2935148E001FC2A2 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAA5A20A2935148E001FC2A2 /* Feather.ttf */; };
@@ -28,6 +27,7 @@
 		FAA5A2252935148E001FC2A2 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAA5A2152935148E001FC2A2 /* EvilIcons.ttf */; };
 		FAA5A2262935148E001FC2A2 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAA5A2162935148E001FC2A2 /* SimpleLineIcons.ttf */; };
 		FAA5A2272935148E001FC2A2 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAA5A2172935148E001FC2A2 /* MaterialIcons.ttf */; };
+		FACE7B5E296B2FE300D82D5F /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FACE7B5D296B2FE300D82D5F /* BootSplash.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,7 +55,6 @@
 		279D7ED087F69E6C1EDB8AB4 /* Pods-ReactNativeStructure.dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeStructure.dev.xcconfig"; path = "Target Support Files/Pods-ReactNativeStructure/Pods-ReactNativeStructure.dev.xcconfig"; sourceTree = "<group>"; };
 		36B3F4A773B5C8DA7DE3EE1A /* Pods-ReactNativeStructure.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeStructure.staging.xcconfig"; path = "Target Support Files/Pods-ReactNativeStructure/Pods-ReactNativeStructure.staging.xcconfig"; sourceTree = "<group>"; };
 		6AE53D2ED75F6C124E545DD0 /* Pods-ReactNativeStructure.staging-release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeStructure.staging-release.xcconfig"; path = "Target Support Files/Pods-ReactNativeStructure/Pods-ReactNativeStructure.staging-release.xcconfig"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ReactNativeStructure/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5C2E4DDAFBB9B0E89CA2478 /* Pods-ReactNativeStructure.dev-release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeStructure.dev-release.xcconfig"; path = "Target Support Files/Pods-ReactNativeStructure/Pods-ReactNativeStructure.dev-release.xcconfig"; sourceTree = "<group>"; };
 		ECFFE73CEB411B897C298370 /* Pods-ReactNativeStructure.prod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeStructure.prod.xcconfig"; path = "Target Support Files/Pods-ReactNativeStructure/Pods-ReactNativeStructure.prod.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -76,6 +75,7 @@
 		FAA5A2162935148E001FC2A2 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		FAA5A2172935148E001FC2A2 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
 		FAA90F41296A9A3600666033 /* OpenSSL.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OpenSSL.xcframework; path = "Pods/OpenSSL-Universal/Frameworks/OpenSSL.xcframework"; sourceTree = "<group>"; };
+		FACE7B5D296B2FE300D82D5F /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = ReactNativeStructure/BootSplash.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,12 +93,12 @@
 		13B07FAE1A68108700A75B9A /* ReactNativeStructure */ = {
 			isa = PBXGroup;
 			children = (
+				FACE7B5D296B2FE300D82D5F /* BootSplash.storyboard */,
 				FAA5A2072935148E001FC2A2 /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = ReactNativeStructure;
@@ -246,11 +246,11 @@
 				FAA5A2182935148E001FC2A2 /* Fontisto.ttf in Resources */,
 				FAA5A2232935148E001FC2A2 /* FontAwesome.ttf in Resources */,
 				FAA5A21F2935148E001FC2A2 /* Foundation.ttf in Resources */,
+				FACE7B5E296B2FE300D82D5F /* BootSplash.storyboard in Resources */,
 				FAA5A2222935148E001FC2A2 /* FontAwesome5_Regular.ttf in Resources */,
 				FAA5A2202935148E001FC2A2 /* Ionicons.ttf in Resources */,
 				FAA5A2252935148E001FC2A2 /* EvilIcons.ttf in Resources */,
 				FAA5A21B2935148E001FC2A2 /* Entypo.ttf in Resources */,
-				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				FAA5A2242935148E001FC2A2 /* Zocial.ttf in Resources */,
 				FAA5A2262935148E001FC2A2 /* SimpleLineIcons.ttf in Resources */,
 				FAA5A21A2935148E001FC2A2 /* Feather.ttf in Resources */,
